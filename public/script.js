@@ -1829,6 +1829,10 @@ export function messageFormatting(mes, ch_name, isSystem, isUser, messageId, san
         mes = mes.slice(replacedPromptBias.length);
     }
 
+    if (mes.length > 64*1024) {
+        mes = mes.slice(0, 64*1024);
+    }
+
     if (!isSystem) {
         function getRegexPlacement() {
             try {
